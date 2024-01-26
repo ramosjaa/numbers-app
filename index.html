@@ -10,10 +10,14 @@
 		<button onclick="add()">=</button>
 		<label id="sum"></label>
 		<script>
-			function add(){
+			async function add(){
 				let num1 = document.getElementById("num1");
 				let num2 = document.getElementById("num2");
-				let sum = Number(num1.value) + Number(num2.value);
+				let n = num1.value;
+				let m = num2.value;
+				
+				const response = await fetch("http://localhost:3000/add/" + n + "/" + m);
+				const sum = await response.json();
 				document.getElementById("sum").innerText = sum;
 			}
 		</script>
