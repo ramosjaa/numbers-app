@@ -130,7 +130,7 @@
 		async function cipher(){
 			const numberToTest = document.getElementById("textToCipher");
 			let plainText = numberToTest.value;
-			const response = await fetch("https://cipher-service-ramosjaa.onrender.com/ciphers/" + plainText);
+			const response = await fetch("https://cipher-service-latest-f7m8.onrender.com/ciphers" + plainText);
 			const result = await response.json();
 			document.getElementById("cipher").innerText = result;
 		}
