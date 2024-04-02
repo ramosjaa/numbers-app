@@ -19,6 +19,9 @@
 </head>
 
 <body>
+	<div class="row" id="login">
+
+	</div>
 	<div class="row">
 		<div class="column">
 			<section>
@@ -73,7 +76,11 @@
 		</div>
 	</div>
 
+	<script src="configuration.js"></script>
 	<script>
+		let hosts = configuration.hosts;
+		displayLogin();
+
 		async function add() {
 			let n = document.getElementById("add1");
 			let m = document.getElementById("add2");
@@ -117,7 +124,8 @@
 		async function isPrime() {
 			const numberToTest = document.getElementById("numberToTest");
 			let n = numberToTest.value;
-			const response = await fetch("https://primes-service-latest-l13u.onrender.com/primes/" + n);
+			const headers = {'Authorization': `Bearer ${configuration.token}`};
+			const response = await fetch(`${hosts.primes_service}/primes/${n}`, { headers });
 			const result = await response.json();
 			document.getElementById("primeCheckResult").innerText = result;
 		}
